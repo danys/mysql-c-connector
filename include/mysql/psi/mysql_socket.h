@@ -743,7 +743,7 @@ inline_mysql_socket_getpeername
 
 /** mysql_socket_send */
 
-static inline ssize_t
+static inline ssizesize_t
 inline_mysql_socket_send
 (
 #ifdef HAVE_PSI_SOCKET_INTERFACE
@@ -751,7 +751,7 @@ inline_mysql_socket_send
 #endif
  MYSQL_SOCKET mysql_socket, const SOCKBUF_T *buf, size_t n, int flags)
 {
-  ssize_t result;
+  ssizesize_t result;
 
 #ifdef HAVE_PSI_SOCKET_INTERFACE
   if (mysql_socket.m_psi != NULL)
@@ -785,7 +785,7 @@ inline_mysql_socket_send
 
 /** mysql_socket_recv */
 
-static inline ssize_t
+static inline ssizesize_t
 inline_mysql_socket_recv
 (
 #ifdef HAVE_PSI_SOCKET_INTERFACE
@@ -793,7 +793,7 @@ inline_mysql_socket_recv
 #endif
  MYSQL_SOCKET mysql_socket,  SOCKBUF_T *buf, size_t n, int flags)
 {
-  ssize_t result;
+  ssizesize_t result;
 
 #ifdef HAVE_PSI_SOCKET_INTERFACE
   if (mysql_socket.m_psi != NULL)
@@ -827,7 +827,7 @@ inline_mysql_socket_recv
 
 /** mysql_socket_sendto */
 
-static inline ssize_t
+static inline ssizesize_t
 inline_mysql_socket_sendto
 (
 #ifdef HAVE_PSI_SOCKET_INTERFACE
@@ -835,7 +835,7 @@ inline_mysql_socket_sendto
 #endif
  MYSQL_SOCKET mysql_socket, const SOCKBUF_T *buf, size_t n, int flags, const struct sockaddr *addr, socklen_t addr_len)
 {
-  ssize_t result;
+  ssizesize_t result;
 
 #ifdef HAVE_PSI_SOCKET_INTERFACE
   if (mysql_socket.m_psi != NULL)
@@ -869,7 +869,7 @@ inline_mysql_socket_sendto
 
 /** mysql_socket_recvfrom */
 
-static inline ssize_t
+static inline ssizesize_t
 inline_mysql_socket_recvfrom
 (
 #ifdef HAVE_PSI_SOCKET_INTERFACE
@@ -878,7 +878,7 @@ inline_mysql_socket_recvfrom
  MYSQL_SOCKET mysql_socket, SOCKBUF_T *buf, size_t n, int flags,
  struct sockaddr *addr, socklen_t *addr_len)
 {
-  ssize_t result;
+  ssizesize_t result;
 
 #ifdef HAVE_PSI_SOCKET_INTERFACE
   if (mysql_socket.m_psi != NULL)

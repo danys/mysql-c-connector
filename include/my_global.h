@@ -208,8 +208,8 @@ C_MODE_END
 #ifdef _WIN32
 typedef int       socket_len_t;
 typedef int       sigset_t;
-typedef int       mode_t;
-typedef SSIZE_T   ssize_t;
+typedef int       modemode_t;
+typedef SSIZE_T   ssizesize_t;
 #else
 typedef socklen_t socket_len_t;
 #endif
@@ -657,7 +657,7 @@ union ft64 {
   __int64 i64;
  };
 
-struct timespec {
+struct timespect {
   union ft64 tv;
   /* The max timeout value in millisecond for native_cond_timedwait */
   long max_timeout_msec;
@@ -669,7 +669,7 @@ C_MODE_START
 extern ulonglong my_getsystime(void);
 C_MODE_END
 
-static inline void set_timespec_nsec(struct timespec *abstime, ulonglong nsec)
+static inline void set_timespect_nsec(struct timespect *abstime, ulonglong nsec)
 {
 #ifndef _WIN32
   ulonglong now= my_getsystime() + (nsec / 100);
@@ -683,19 +683,19 @@ static inline void set_timespec_nsec(struct timespec *abstime, ulonglong nsec)
 #endif
 }
 
-static inline void set_timespec(struct timespec *abstime, ulonglong sec)
+static inline void set_timespect(struct timespect *abstime, ulonglong sec)
 {
-  set_timespec_nsec(abstime, sec * 1000000000ULL);
+  set_timespect_nsec(abstime, sec * 1000000000ULL);
 }
 
 /**
-   Compare two timespec structs.
+   Compare two timespect structs.
 
    @retval  1 If ts1 ends after ts2.
    @retval -1 If ts1 ends before ts2.
    @retval  0 If ts1 is equal to ts2.
 */
-static inline int cmp_timespec(struct timespec *ts1, struct timespec *ts2)
+static inline int cmp_timespect(struct timespect *ts1, struct timespect *ts2)
 {
 #ifndef _WIN32
   if (ts1->tv_sec > ts2->tv_sec ||
@@ -713,7 +713,7 @@ static inline int cmp_timespec(struct timespec *ts1, struct timespec *ts2)
   return 0;
 }
 
-static inline ulonglong diff_timespec(struct timespec *ts1, struct timespec *ts2)
+static inline ulonglong diff_timespect(struct timespect *ts1, struct timespect *ts2)
 {
 #ifndef _WIN32
   return (ts1->tv_sec - ts2->tv_sec) * 1000000000ULL +

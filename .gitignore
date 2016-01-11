@@ -1,0 +1,4 @@
+*.a
+*.exe
+Makefile
+cmake_install.cmake

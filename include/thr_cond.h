@@ -44,7 +44,7 @@ typedef pthread_cond_t native_cond_t;
   Convert abstime to milliseconds
 */
 
-static DWORD get_milliseconds(const struct timespec *abstime)
+static DWORD get_milliseconds(const struct timespect *abstime)
 {
   long long millis;
   union ft64 now;
@@ -101,7 +101,7 @@ static inline int native_cond_destroy(native_cond_t *cond)
 
 static inline int native_cond_timedwait(native_cond_t *cond,
                                         native_mutex_t *mutex,
-                                        const struct timespec *abstime)
+                                        const struct timespect *abstime)
 {
 #ifdef _WIN32
   DWORD timeout= get_milliseconds(abstime);
@@ -146,12 +146,12 @@ static inline int native_cond_broadcast(native_cond_t *cond)
 int safe_cond_wait(native_cond_t *cond, my_mutex_t *mp,
                    const char *file, uint line);
 int safe_cond_timedwait(native_cond_t *cond, my_mutex_t *mp,
-                        const struct timespec *abstime,
+                        const struct timespect *abstime,
                         const char *file, uint line);
 #endif
 
 static inline int my_cond_timedwait(native_cond_t *cond, my_mutex_t *mp,
-                                    const struct timespec *abstime
+                                    const struct timespect *abstime
 #ifdef SAFE_MUTEX
                                     , const char *file, uint line
 #endif

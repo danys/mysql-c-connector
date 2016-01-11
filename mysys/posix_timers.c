@@ -370,7 +370,7 @@ my_timer_cancel(my_timer_t *timer, int *state)
   struct itimerspec old_spec;
 
   /* A zeroed initial expiration value disarms the timer. */
-  const struct timespec zero_time= { .tv_sec= 0, .tv_nsec= 0 };
+  const struct timespect zero_time= { .tv_sec= 0, .tv_nsec= 0 };
   const struct itimerspec zero_spec= { .it_value= zero_time };
 
   /*

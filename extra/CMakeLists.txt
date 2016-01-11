@@ -15,14 +15,17 @@
 
 INCLUDE_DIRECTORIES(
 ${CMAKE_SOURCE_DIR}/include 
-${ZLIB_INCLUDE_DIR})
+${ZLIB_INCLUDE_DIR}
+${CMAKE_SOURCE_DIR}/libseh)
+
+LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/libseh)
 
 # Default install component for the files here
 SET(MYSQL_INSTALL_COMPONENT Development)
 
 IF(NOT CMAKE_CROSSCOMPILING)
  ADD_EXECUTABLE(comp_err comp_err.c)
- TARGET_LINK_LIBRARIES(comp_err mysys mysys_ssl)
+ TARGET_LINK_LIBRARIES(comp_err mysys mysys_ssl seh)
  SET_TARGET_PROPERTIES(comp_err PROPERTIES LINKER_LANGUAGE CXX)
 ENDIF()
 

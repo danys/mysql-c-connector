@@ -15,10 +15,12 @@
 
 ADD_DEFINITIONS("-DMYSQL_CLIENT")
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/libseh)
+
+LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/libseh)
 
 ADD_EXECUTABLE(mysql_client_test mysql_client_test.c)
-TARGET_LINK_LIBRARIES(mysql_client_test mysqlclient)
+TARGET_LINK_LIBRARIES(mysql_client_test mysqlclient seh)
 SET_TARGET_PROPERTIES(mysql_client_test PROPERTIES LINKER_LANGUAGE CXX)
 
 #

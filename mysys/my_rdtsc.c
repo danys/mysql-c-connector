@@ -198,7 +198,7 @@ ulonglong my_timer_nanoseconds(void)
   return (ulonglong) gethrtime();
 #elif defined(HAVE_CLOCK_GETTIME) && defined(CLOCK_REALTIME)
   {
-    struct timespec tp;
+    struct timespect tp;
     clock_gettime(CLOCK_REALTIME, &tp);
     return (ulonglong) tp.tv_sec * 1000000000 + (ulonglong) tp.tv_nsec;
   }

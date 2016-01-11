@@ -59,7 +59,8 @@
 #elif defined(HAVE_GCC_ATOMIC_BUILTINS)
 #  include "atomic/gcc_builtins.h"
 #else
-#  error Native atomics support not found!
+#  include "atomic/gcc_builtins.h"
+/*#  error Native atomics support not found!*/
 #endif
 
 /*

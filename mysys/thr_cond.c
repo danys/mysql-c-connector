@@ -70,7 +70,7 @@ int safe_cond_wait(native_cond_t *cond, my_mutex_t *mp,
 
 
 int safe_cond_timedwait(native_cond_t *cond, my_mutex_t *mp,
-                        const struct timespec *abstime,
+                        const struct timespect *abstime,
                         const char *file, uint line)
 {
   int error;

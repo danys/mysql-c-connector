@@ -22,7 +22,7 @@
 #ifdef _WIN32
 typedef int MY_MODE;
 #else
-typedef mode_t MY_MODE;
+typedef modemode_t MY_MODE;
 #endif /* _WIN32 */
 
 /*

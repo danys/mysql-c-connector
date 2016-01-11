@@ -109,7 +109,7 @@ int vio_socket_io_wait(Vio *vio, enum enum_vio_io_event event)
 
 size_t vio_read(Vio *vio, uchar *buf, size_t size)
 {
-  ssize_t ret;
+  ssizesize_t ret;
   int flags= 0;
   DBUG_ENTER("vio_read");
 
@@ -190,7 +190,7 @@ my_bool vio_buff_has_data(Vio *vio)
 
 size_t vio_write(Vio *vio, const uchar* buf, size_t size)
 {
-  ssize_t ret;
+  ssizesize_t ret;
   int flags= 0;
   DBUG_ENTER("vio_write");
 
@@ -692,7 +692,7 @@ static my_bool socket_peek_read(Vio *vio, uint *bytes)
   return FALSE;
 #else
   char buf[1024];
-  ssize_t res= recv(sd, &buf, sizeof(buf), MSG_PEEK);
+  ssizesize_t res= recv(sd, &buf, sizeof(buf), MSG_PEEK);
   if (res < 0)
     return TRUE;
   *bytes= res;
@@ -1040,7 +1040,7 @@ my_bool vio_is_connected(Vio *vio)
   @return number of bytes in one of the buffers or < 0 if error.
 */
 
-ssize_t vio_pending(Vio *vio)
+ssizesize_t vio_pending(Vio *vio)
 {
   uint bytes= 0;
 
@@ -1061,7 +1061,7 @@ ssize_t vio_pending(Vio *vio)
     causes it to attempt to read from the socket.
   */
 
-  return (ssize_t) bytes;
+  return (ssizesize_t) bytes;
 }
 
 #endif

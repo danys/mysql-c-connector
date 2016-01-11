@@ -14,6 +14,7 @@
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
 #include "my_stacktrace.h"
+#include <seh.h>
 
 #ifndef _WIN32
 #include "my_pthread.h"
@@ -74,7 +75,7 @@ static int safe_print_str(const char *addr, int max_len)
   int fd;
   pid_t tid;
   off_t offset;
-  ssize_t nbytes= 0;
+  ssizesize_t nbytes= 0;
   size_t total, count;
   char buf[256];
 
@@ -535,29 +536,30 @@ void my_create_minidump(const char *name, HANDLE process, DWORD pid)
     else
     {
       my_safe_printf_stderr("MiniDumpWriteDump() failed, last error %d\n",
-                            GetLastError());
+                            (int)GetLastError());
     }
     CloseHandle(hFile);
   }
   else
   {
     my_safe_printf_stderr("CreateFile(%s) failed, last error %d\n",
-                          name, GetLastError());
+                          name, (int)GetLastError());
   }
 }
 
 
 void my_safe_puts_stderr(const char *val, size_t len)
 {
-  __try
+  __seh_try
   {
     my_write_stderr(val, len);
     my_safe_printf_stderr("%s", "\n");
   }
-  __except(EXCEPTION_EXECUTE_HANDLER)
+  __seh_except(EXCEPTION_EXECUTE_HANDLER)
   {
     my_safe_printf_stderr("%s", "is an invalid string pointer\n");
   }
+  __seh_end_except
 }
 #endif /* _WIN32 */
 
